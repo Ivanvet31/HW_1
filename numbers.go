@@ -10,26 +10,14 @@ import (
 func main() {
 	var nums []string
 	var str string
-	var res []string
-
+	var res = make(map[string]int)
 	reader := bufio.NewReader(os.Stdin)
 	str, _ = reader.ReadString('\n')
 
 	nums = strings.Fields(str)
-	res = append(res, nums[0])
 
-	for _, num := range nums {
-		a := 1
-
-		for _, length := range res {
-			if num == length {
-				a *= 0
-			}
-		}
-
-		if a != 0 {
-			res = append(res, num)
-		}
+	for i, num := range nums {
+		res[num] = i
 	}
 
 	fmt.Print(len(res))
